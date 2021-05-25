@@ -1,12 +1,12 @@
 part of main;
 
-Widget _emptyView(String text) {
+Widget _emptyView(String text, {IconData icon: Icons.info_outline}) {
   return Center(
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Icon(
-          Icons.info_outline,
+          icon,
           size: 110.0,
           color: AppColors.colorWhite,
         ),

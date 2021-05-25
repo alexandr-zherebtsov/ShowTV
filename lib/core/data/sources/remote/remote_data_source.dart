@@ -4,6 +4,7 @@ import 'package:show_tv/core/responses/tv_response.dart';
 
 abstract class RemoteDataSource {
   Future<MovieResponse> getMovie();
+  Future<MovieResponse> getMovieByTest(int genre);
   Future<TVResponse> getTv();
   Future<ActorResponse> getCredits(int id, String type);
 }

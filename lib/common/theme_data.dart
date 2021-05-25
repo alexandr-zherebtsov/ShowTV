@@ -46,7 +46,17 @@ class AppThemeData {
       headline2: const TextStyle(
         color: AppColors.colorWhite,
         fontWeight: FontWeight.w600,
+        fontSize: 24.0,
+      ),
+      headline3: const TextStyle(
+        color: AppColors.colorWhite,
+        fontWeight: FontWeight.w600,
         fontSize: 20.0,
+      ),
+      bodyText1: const TextStyle(
+        color: AppColors.colorWhite,
+        fontWeight: FontWeight.w400,
+        fontSize: 19.0,
       ),
       caption: const TextStyle(
         color: AppColors.colorWhite,

@@ -16,7 +16,9 @@ Future<void> main() async {
     ),
   );
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(App());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
+    runApp(App());
+  });
 }
 
 class App extends StatelessWidget {
@@ -26,8 +28,7 @@ class App extends StatelessWidget {
       title: AppLocalization.textShowTV,
       debugShowCheckedModeBanner: false,
       getPages: AppPages.pages,
-      initialRoute: AppRoutes.main,
-      defaultTransition: Transition.cupertino,
+      initialRoute: AppRoutes.splash,
       theme: AppThemeData.appTheme,
       initialBinding: GlobalBinding(),
     );

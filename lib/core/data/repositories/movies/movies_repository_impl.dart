@@ -10,4 +10,9 @@ class MoviesRepositoryImpl extends MoviesRepository {
   Future<MovieResponse> getMovie() async {
     return await _remoteDataSource.getMovie();
   }
+
+  @override
+  Future<MovieResponse> getMovieByTest(int genre) async {
+    return await _remoteDataSource.getMovieByTest(genre);
+  }
 }

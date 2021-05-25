@@ -1,21 +1,29 @@
 library main;
 
 import 'dart:convert';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:show_tv/common/assets_path.dart';
 import 'package:show_tv/common/colors.dart';
 import 'package:show_tv/common/localization.dart';
+import 'package:show_tv/common/test_data.dart';
 import 'package:show_tv/core/data/repositories/movies/movies_repository.dart';
 import 'package:show_tv/core/models/movie_model.dart';
+import 'package:show_tv/core/models/test_model.dart';
 import 'package:show_tv/core/responses/movie_response.dart';
 import 'package:show_tv/core/network/exception_handler.dart';
+import 'package:show_tv/core/utils/utils.dart';
+import 'package:show_tv/presentation/binding/movie_binding.dart';
+import 'package:show_tv/presentation/ui/movie/movie_imports.dart';
+import 'package:show_tv/presentation/ui/widgets/is_busy_screen.dart';
+import 'package:show_tv/presentation/ui/widgets/rating.dart';
+import 'package:show_tv/presentation/ui/widgets/snackbar.dart';
 
 part 'main_screen.dart';
 part 'main_controller.dart';
-part 'widgets/is_busy_screen.dart';
 part 'movies_screen/movies_screen.dart';
 part 'movies_screen/widgets/movie_item.dart';
 part 'movies_screen/widgets/empty_view.dart';
 part 'test_screen/test_screen.dart';
+part 'test_screen/widgets/test_item.dart';

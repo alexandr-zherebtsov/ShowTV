@@ -36,6 +36,26 @@ class RemoteDataSourceImpl extends RemoteDataSource {
   }
 
   @override
+  Future<MovieResponse> getMovieByTest(int genre) async{
+    var params = {
+      'api_key' : apiKey,
+      'language' : 'en-US',
+      'page' : 1,
+      'sort_by' : 'popularity.desc',
+      'with_genres': genre,
+    };
+
+    try{
+      Response response = await dio.get(getMovieUrl, queryParameters: params);
+      return MovieResponse.fromJson(response.data);
+    }
+    catch(e) {
+      handleErrorApp(e, decoder: _decoder);
+      return MovieResponse.withError('$e');
+    }
+  }
+
+  @override
   Future<TVResponse> getTv() async{
     var params = {
       'api_key' : apiKey,

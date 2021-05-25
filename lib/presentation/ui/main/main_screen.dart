@@ -5,34 +5,44 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SafeArea(
-    child: Obx(() => mainController.isBusy.value ? _isBusyScreen() : Scaffold(
+    child: Obx(() => Scaffold(
         backgroundColor: Get.theme.scaffoldBackgroundColor,
         appBar: AppBar(
           backgroundColor: Get.theme.appBarTheme.color,
-          title: mainController.isSearch.value && mainController.currentPage.value == 0 ? TextField(
-            autofocus: true,
-            cursorColor: AppColors.colorWhite,
-            controller: mainController.searchTEC.value,
-            decoration: InputDecoration(
-              hintText: AppLocalization.textSearch,
+          title: mainController.isSearch.value && mainController.currentPage.value == 0 ? Padding(
+            padding: const EdgeInsets.only(bottom: 3.0),
+            child: TextField(
+              autofocus: true,
+              cursorColor: AppColors.colorWhite,
+              controller: mainController.searchTEC.value,
+              decoration: InputDecoration(
+                hintText: AppLocalization.textSearch,
+              ),
+              onChanged: (v) => mainController.searchMovies(),
             ),
-            onChanged: (v) => mainController.searchMovies(),
-          ) : Text(
-            AppLocalization.textShowTV,
-            style: Get.theme.appBarTheme.titleTextStyle,
+          ) : Hero(
+            tag: 'appLogo',
+            child: Image.asset(
+              AssetsPath.icShowTvLogo,
+              height: 24,
+            ),
           ),
           actions: [
-            Obx(() => mainController.currentPage.value == 0 ? mainController.isSearch.value ? IconButton(
+            Obx(() => mainController.isBusy.value ? const Offstage() : mainController.currentPage.value == 0 ? mainController.isSearch.value ? IconButton(
               icon: Icon(Icons.clear),
               onPressed: () => mainController.clearSearch(),
               ) : IconButton(
                 icon: Icon(Icons.search),
                 onPressed: () => mainController.isSearch(true),
-              ) : const Offstage(),
+              ) : IconButton(
+                icon: Icon(Icons.check_circle_outline),
+                onPressed: () => mainController.saveAnswers(),
+              ),
             ),
           ],
         ),
-        body: Obx(() => mainController.screens.elementAt(mainController.currentPage.value)),
+        body: Obx(() => mainController.isBusy.value ? isBusyScreen()
+            : mainController.screens.elementAt(mainController.currentPage.value)),
         bottomNavigationBar: BottomNavigationBar(
           elevation: 12.0,
           type: BottomNavigationBarType.fixed,
@@ -45,8 +55,8 @@ class MainScreen extends StatelessWidget {
           unselectedLabelStyle: Get.theme.bottomNavigationBarTheme.unselectedLabelStyle,
           items: [
             BottomNavigationBarItem(
-              icon: const Icon(Icons.sort),
-              activeIcon: const Icon(Icons.menu),
+              icon: const Icon(Icons.dashboard_outlined),
+              activeIcon: const Icon(Icons.dashboard),
               label: AppLocalization.textMovies,
             ),
             BottomNavigationBarItem(

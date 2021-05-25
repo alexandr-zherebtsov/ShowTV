@@ -1,6 +1,7 @@
-part of main;
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-Widget _isBusyScreen() {
+Widget isBusyScreen() {
   return Container(
     color: Get.theme.scaffoldBackgroundColor,
     child: Center(
