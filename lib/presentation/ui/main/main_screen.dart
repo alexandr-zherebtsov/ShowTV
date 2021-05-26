@@ -30,12 +30,15 @@ class MainScreen extends StatelessWidget {
           actions: [
             Obx(() => mainController.isBusy.value ? const Offstage() : mainController.currentPage.value == 0 ? mainController.isSearch.value ? IconButton(
               icon: Icon(Icons.clear),
+              tooltip: AppLocalization.textClear,
               onPressed: () => mainController.clearSearch(),
               ) : IconButton(
                 icon: Icon(Icons.search),
+                tooltip: AppLocalization.textSearch,
                 onPressed: () => mainController.isSearch(true),
               ) : IconButton(
                 icon: Icon(Icons.check_circle_outline),
+                tooltip: AppLocalization.textSave,
                 onPressed: () => mainController.saveAnswers(),
               ),
             ),

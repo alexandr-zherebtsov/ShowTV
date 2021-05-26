@@ -6,6 +6,7 @@ class AppLocalization {
   static const String textNoFilms = 'No films';
   static const String textNoResults = 'No Results';
   static const String textSearch = 'Search';
+  static const String textClear = 'Clear';
   static const String textSave = 'Save';
   static const String textCancel = 'Cancel';
   static const String textSaveAnswers = 'Save answers';
