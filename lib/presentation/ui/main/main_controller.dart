@@ -10,7 +10,8 @@ class MainController extends GetxController {
   RxBool isSearch = false.obs;
   RxInt testNum = 0.obs;
   RxInt requestNum = 99.obs;
-  RxString requestWord = AppLocalization.textNormal.obs;
+  RxString requestWord = AppLocalization.textGood.obs;
+  Rx<IconData> requestIcon = Icons.mood.obs;
 
   RxList<QuestionModel> questions = <QuestionModel>[].obs;
   List<Widget> screens = <Widget>[];
@@ -85,7 +86,7 @@ class MainController extends GetxController {
             colorBrightness: AppColors.brightnessLight,
             child: Text(
               AppLocalization.textCancel,
-              style: Get.theme.textTheme.caption!.copyWith(color: AppColors.colorBlack.withOpacity(0.5)),
+              style: Get.theme.textTheme.caption!.copyWith(color: AppColors.colorBlack.withOpacity(0.55)),
             ),
             onPressed: () => navBack(),
           ),
@@ -93,7 +94,7 @@ class MainController extends GetxController {
             colorBrightness: AppColors.brightnessLight,
             child: Text(
               AppLocalization.textSave,
-              style: Get.theme.textTheme.caption!.copyWith(color: AppColors.colorBlue_3),
+              style: Get.theme.textTheme.caption!.copyWith(color: AppColors.colorBlack),
             ),
             onPressed: () => getTestResult(),
           ),
@@ -127,9 +128,10 @@ class MainController extends GetxController {
   }
 
   Future<void> getTestResult() async {
+    navBack();
+
     isBusy(true);
 
-    navBack();
     testNum.value = 0;
 
     for(int i = 0; i < questions.length; i++) {
@@ -137,36 +139,42 @@ class MainController extends GetxController {
     }
 
     if (testNum.value <= 0) {
-      requestNum.value = 10770; // TV movie
+      requestNum.value = 53; // thriller
       requestWord.value = AppLocalization.textAwful;
+      requestIcon.value = Icons.mood_bad;
     }
     else if (testNum.value > 0 && testNum.value < 11) {
-      requestNum.value = 99; // documentary
+      requestNum.value = 10751; // family
       requestWord.value = AppLocalization.textVeryBad;
+      requestIcon.value = Icons.sentiment_very_dissatisfied;
     }
     else if (testNum.value < 10 && testNum.value < 16) {
       requestNum.value = 18; // drama
       requestWord.value = AppLocalization.textBad;
+      requestIcon.value = Icons.sentiment_very_dissatisfied;
     }
     else if (testNum.value < 15 && testNum.value < 20) {
       requestNum.value = 27; // horror
       requestWord.value = AppLocalization.textNormal;
+      requestIcon.value = Icons.sentiment_neutral;
     }
     else if (testNum.value < 19 && testNum.value < 26) {
       requestNum.value = 10752; // war
       requestWord.value = AppLocalization.textNormal;
+      requestIcon.value = Icons.sentiment_neutral;
     }
     else if (testNum.value < 25 && testNum.value < 30) {
       requestNum.value = 9648; // mystery
-      requestWord.value = AppLocalization.textGood;
     }
     else if (testNum.value < 29 && testNum.value < 37) {
       requestNum.value = 10752; // western
       requestWord.value = AppLocalization.textVeryGood;
+      requestIcon.value = Icons.sentiment_satisfied;
     }
     else {
       requestNum.value = 12; // adventure
       requestWord.value = AppLocalization.textGreat;
+      requestIcon.value = Icons.sentiment_very_satisfied;
     }
 
     currentPage.value = 0;
@@ -178,6 +186,9 @@ class MainController extends GetxController {
 
     isBusy(false);
 
-    showSnackBar(title: AppLocalization.textYourMood + requestWord.value);
+    showSnackBar(
+      title: AppLocalization.textYourMood + requestWord.value,
+      icon: requestIcon.value,
+    );
   }
 }

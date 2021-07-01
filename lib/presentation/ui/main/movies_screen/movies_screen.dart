@@ -13,9 +13,9 @@ class _MoviesScreen extends StatelessWidget {
   }
 
   Widget _allMovies(MainController mainController) {
-    return mainController.movies.isEmpty ? _emptyView(AppLocalization.textNoFilms) : SingleChildScrollView(
+    return mainController.movies.isEmpty ? _emptyView(AppLocalization.textNoMovies) : SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
         child: Wrap(
           children: mainController.movies.map((e) => _movieItem(e, () => mainController.navToMovie(e))).toList(),
         ),
@@ -26,7 +26,7 @@ class _MoviesScreen extends StatelessWidget {
   Widget _searchMovies(MainController mainController) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
         child: Wrap(
           children: mainController.searchMoviesList.map((e) => _movieItem(e, () => mainController.navToMovie(e))).toList(),
         ),

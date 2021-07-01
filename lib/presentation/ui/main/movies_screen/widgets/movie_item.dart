@@ -7,7 +7,7 @@ Widget _movieItem(MovieModel e, void Function()? navFunc) {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SizedBox(
-          width: Get.size.width / 2 - 32,
+          width: Get.size.width / 2 - 28,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -41,7 +41,7 @@ Widget _movieItem(MovieModel e, void Function()? navFunc) {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                padding: const EdgeInsets.only(top: 8.0),
                 child: Hero(
                   tag: 'name' + e.id.toString(),
                   child: Text(

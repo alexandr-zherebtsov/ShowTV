@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void showSnackBar({
-  String title = '',
-  String message = '',
-  int duration = 2600,
+  String title: '',
+  String message: '',
+  int duration: 2600,
+  IconData icon: Icons.warning_amber_sharp,
 }) {
   Get.snackbar(
     title,
@@ -20,7 +21,7 @@ void showSnackBar({
         softWrap: false,
       ),
     ),
-    icon: Icon(Icons.warning_amber_sharp),
+    icon: Icon(icon),
     shouldIconPulse: true,
     barBlur: 20,
     isDismissible: true,

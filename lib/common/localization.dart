@@ -3,8 +3,8 @@ class AppLocalization {
   static const String textShowTV = 'ShowTV';
   static const String textMovies = 'Movies';
   static const String textTest = 'Test';
-  static const String textNoFilms = 'No films';
-  static const String textNoResults = 'No Results';
+  static const String textNoMovies = 'No movies';
+  static const String textNoResults = 'No results';
   static const String textSearch = 'Search';
   static const String textClear = 'Clear';
   static const String textSave = 'Save';
